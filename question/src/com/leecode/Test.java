@@ -1,8 +1,5 @@
 package com.leecode;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class Test {
     public static void main(String[] args) {
 //        int[] nums = {5,2,4,6,6,3};
@@ -26,7 +23,6 @@ public class Test {
 //        System.out.println(test421.findMaximumXOR(new int[]{2, 4}));
 //        System.out.println(test421.findMaximumXOR(new int[]{8, 10, 2}));
 //        System.out.println(test421.findMaximumXOR(new int[]{14, 70, 53, 83, 49, 91, 36, 80, 92, 51, 66, 70}));
-        double j =  (int)Math.pow(2,32);
-        System.out.println(j);
+        System.out.println("111");
     }
 }
