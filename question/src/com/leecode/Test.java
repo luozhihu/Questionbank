@@ -23,6 +23,7 @@ public class Test {
 //        System.out.println(test421.findMaximumXOR(new int[]{2, 4}));
 //        System.out.println(test421.findMaximumXOR(new int[]{8, 10, 2}));
 //        System.out.println(test421.findMaximumXOR(new int[]{14, 70, 53, 83, 49, 91, 36, 80, 92, 51, 66, 70}));
-        System.out.println("111");
+        Test1705 test1705 = new Test1705();
+        System.out.println(test1705.eatenApples(new int[]{1, 2, 3, 5, 2}, new int[]{3, 2, 1, 4, 2}));
     }
 }
