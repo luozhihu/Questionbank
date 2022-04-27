@@ -4,11 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class Test1996 {
-    public static void main(String[] args) {
-    int[][] properties = new int[][]{{5,5},{6,3},{3,6}};
-        System.out.println(numberOfWeakCharacters(properties));
-    }
-    public static int numberOfWeakCharacters(int[][] properties) {
+    public int numberOfWeakCharacters(int[][] properties) {
         int count = 0;
         Arrays.sort(properties, new Comparator<int[]>() {
             @Override
@@ -20,8 +16,6 @@ public class Test1996 {
                 }
             }
         });
-        for(int[] data : properties)
-        System.out.println(Arrays.toString(data));
         int maxdef=properties[0][1];
         for(int n = 0; n<properties.length;n++){
             if(maxdef<=properties[n][1]){
@@ -30,6 +24,6 @@ public class Test1996 {
                 count++;
             }
         }
-    return count;
+        return count;
     }
 }
