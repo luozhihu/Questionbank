@@ -1,33 +1,27 @@
 package com.leecode;
 
 public class Test1414 {
-    static long[] f = new long[93];
-    static {
-        f[1] = 1;
-        f[2] = 1;
-        for (int i = 3; i <= 92; i++) {
-            f[i] = f[i - 1] + f[i - 2];
-        }
-    }
-    public static void main(String[] args) {
-        System.out.println(f[92]);
-    }
-    public static int findMinFibonacciNumbers(int k) {
-        int a=1,b=1;
-        while (b<=k){
-            int c = a + b;
-            a = b;
-            b = c;
-        }
+    public int findMinFibonacciNumbers(int k) {
+        int a = 1,b = 1;
         int ans = 0;
-        while (k>0){
-            while (k>=b){
-                k -= b;
-                ans++;
+        //寻找到斐波那契数列中第一个大于等于k的数
+        while(b < k){
+            b = a + b;
+            a = b - a;
+        }
+        //如果k大于0那么继续寻找小于等于k的斐波那契数
+        while(k>0){
+            //寻找小于等于k的斐波那契数
+            while(b>k){
+                a = b - a;
+                b = b - a;
             }
-            int c = b - a;
-            b = a;
-            a = c;
+            //进行减操作
+            while(b<=k){
+                k -= b;
+            }
+            //没寻找到一个数，ans++
+            ans++;
         }
         return ans;
     }
