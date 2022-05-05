@@ -4,20 +4,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Test397 {
-    Map<Long, Integer> map = new HashMap<>();
-        public int integerReplacement(int n) {
-        return dfs(n*1L);
-    }
-    int dfs(long n){
-        if (n==1) return 0;
-        if (map.containsKey(n)) return map.get(n);
-        int ans;
-        if (n%2==0){
-                 ans = dfs(n/2)+1;
-            }else {
-                ans =  1+Math.min(dfs(n+1),dfs(n-1));
+    public int integerReplacement(int _n) {
+        long n = _n;
+        int ans = 0;
+        while (n != 1) {
+            if (n % 2 == 0) {
+                n >>= 1;
+            } else {
+                //如果+1或-1之后可以被2整除则操作
+                if (n != 3 && ((n >> 1) & 1) == 1) n++;
+                else n--;
             }
-        map.put(n, ++ans);
+            ans++;
+        }
         return ans;
     }
 }
