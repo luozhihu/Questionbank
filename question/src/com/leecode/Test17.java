@@ -6,7 +6,34 @@ import java.util.List;
 import java.util.Map;
 
 public class Test17 {
-    public List<String> letterCombinations(String digits) {
+//    public List<String> letterCombinations(String digits) {
+//        Map<Integer,char[]> map = new HashMap<>();
+//        map.put(2,new char[] {'a','b','c'});
+//        map.put(3,new char[] {'d','e','f'});
+//        map.put(4,new char[] {'g','h','i'});
+//        map.put(5,new char[] {'j','k','l'});
+//        map.put(6,new char[] {'m','n','o'});
+//        map.put(7,new char[] {'p','q','r','s'});
+//        map.put(8,new char[] {'t','u','v'});
+//        map.put(9,new char[] {'w','x','y','z'});
+//        int n = digits.length();
+//        char[] chars = digits.toCharArray();
+//        List<String> ans = new ArrayList<>();
+//        String str = "";
+//        add(map,digits,0,ans,n,str);
+//        return ans;
+//    }
+//
+//    void add(Map<Integer,char[]> map,String digits,int i,List<String> ans,int n,String str){
+//        if (i==n){
+//            ans.add(str);
+//            return ;
+//        }
+//        for (int j = 0; j < map.get(digits.charAt(i)-'0').length; j++) {
+//            add(map,digits,i+1,ans,n,str+map.get(digits.charAt(i)-'0')[j]);
+//        }
+//    }
+public List<String> letterCombinations(String digits) {
         Map<Integer,char[]> map = new HashMap<>();
         map.put(2,new char[] {'a','b','c'});
         map.put(3,new char[] {'d','e','f'});
@@ -16,21 +43,22 @@ public class Test17 {
         map.put(7,new char[] {'p','q','r','s'});
         map.put(8,new char[] {'t','u','v'});
         map.put(9,new char[] {'w','x','y','z'});
-        int n = digits.length();
-        char[] chars = digits.toCharArray();
         List<String> ans = new ArrayList<>();
-        String str = "";
-        add(map,digits,0,ans,n,str);
+        char[] chars = digits.toCharArray();
+        dfs(ans,chars.length,1,chars,"",map);
         return ans;
-    }
 
-    void add(Map<Integer,char[]> map,String digits,int i,List<String> ans,int n,String str){
-        if (i==n){
-            ans.add(str);
-            return ;
-        }
-        for (int j = 0; j < map.get(digits.charAt(i)-'0').length; j++) {
-            add(map,digits,i+1,ans,n,str+map.get(digits.charAt(i)-'0')[j]);
-        }
+}
+void dfs(List<String> ans, int len, int i, char[] chars, String str, Map<Integer, char[]> map){
+    if(i==len) {
+        if(str!="")
+        ans.add(str);
+        return;
     }
+    for (char ch : map.get(chars[i-1])) {
+        str = str + ch;
+        dfs(ans,len,i+1,chars,str,map);
+        str = str.substring(0,i-1);
+    }
+}
 }
